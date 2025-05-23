@@ -17,7 +17,6 @@ dbus-python==1.2.18
 discord==2.3.2
 discord.py==2.3.2
 distro==1.7.0
-distro-info==1.1+ubuntu0.1
 dnspython==2.7.0
 docker==5.0.3
 docker-compose==1.29.2
