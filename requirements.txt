@@ -67,7 +67,6 @@ selenium==4.28.1
 sortedcontainers==2.4.0
 soupsieve==2.7
 starlette==0.45.3
-systemd-python==234
 texttable==1.6.4
 tqdm==4.66.4
 trio==0.28.0
