@@ -1,6 +1,0 @@
-discord.py==2.3.2
-python-dotenv==0.19.2
-requests==2.32.3
-selenium==4.28.1
-beautifulsoup4==4.13.4
-difflib
