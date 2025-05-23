@@ -65,7 +65,6 @@ pyparsing==2.4.7
 pyppeteer==2.0.0
 pyrsistent==0.18.1
 PySocks==1.7.1
-python-apt==2.4.0+ubuntu2
 python-dotenv==0.19.2
 python-multipart==0.0.20
 PyYAML==5.4.1
