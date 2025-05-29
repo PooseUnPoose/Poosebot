@@ -16,7 +16,7 @@ load_dotenv()
 # Corrected line: Pass the environment variable name as a string
 TOKEN = os.getenv("TOKEN")
 CHANNEL_ID = int(os.getenv("CHANNEL_ID")) 
-
+CISchanges = ""
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -24,14 +24,16 @@ class MyClient(discord.Client):
     async def setup_hook(self):
         pass
 
+
 async def print_hello_every_minute(channel):
     while True:
+        global CISchanges
         getTimeTableChanges()
         with open('timetable_changes.txt', 'r') as file:
             lines = file.readlines()
-        CISchanges = [line.strip() for line in lines if '- CIS ' in line]
-        if CISchanges:   
-            Sentmessage = '\n'.join(CISchanges)
+        if CISchanges != "":   
+            Sentmessage = CISchanges
+            CISchanges = ""
             embed = discord.Embed(description=Sentmessage, color=discord.Color.green())
             await channel.send(embed=embed)
         else: 
@@ -65,6 +67,7 @@ def getScreenshotOfClass(url, id, outputfile):
         driver.quit()
 
 def getTimeTableChanges():
+    global CISchanges
     url = "https://www.ufv.ca/arfiles/includes/202509-timetable-changes.htm"
     response = requests.get(url)
 
@@ -89,9 +92,11 @@ def getTimeTableChanges():
             if new_data != existing_data:
                 print("Differences detected (filtered by '- CIS '):")
                 diff = difflib.unified_diff(existing_data, new_data, lineterm='', fromfile='Existing', tofile='New')
+                CISchanges = ""
                 for line in diff:
                     if "- CIS " in line:
-                        print(line)
+                        CISchanges += line + '\n'
+                        print(CISchanges)
                 os.remove('timetable_changes.txt')  
                 os.rename('new_timetable_changes.txt', 'timetable_changes.txt')  
                 print("Timetable changes updated in 'timetable_changes.txt'")
