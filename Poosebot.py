@@ -13,10 +13,10 @@ import difflib
 
 load_dotenv()
 
-# Corrected line: Pass the environment variable name as a string
 TOKEN = os.getenv("TOKEN")
-CHANNEL_ID = int(os.getenv("CHANNEL_ID")) 
+CHANNEL_ID = int(os.getenv("CHANNEL_ID"))
 CISchanges = ""
+url = os.getenv("TIMETABLE_LINK")
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -68,7 +68,6 @@ def getScreenshotOfClass(url, id, outputfile):
 
 def getTimeTableChanges():
     global CISchanges
-    url = "https://www.ufv.ca/arfiles/includes/202509-timetable-changes.htm"
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -141,3 +140,4 @@ async def on_message(message):
 
 
 client.run(TOKEN)
+
