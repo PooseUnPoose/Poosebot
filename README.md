@@ -5,7 +5,18 @@ cd Poosebot
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-mv example.env .env
+touch .env
 ```
+Then insert the following into the .env file:
+```txt
+TOKEN = ""
+CHANNEL_ID = ""
+TIMETABLE_LINK = ""
+```
+Fill in the relevant information with the corresponding variables as such
 
-Fill in the empty spaces in the new .env file with the discord token and channel ID
+```txt
+TOKEN = "YOURDISCORDCLIENTTOKEN"
+CHANNEL_ID = "TheIdForTheChannelToPostIn"
+TIMETABLE_LINK = "https://TheLinkToTheUFVTimeTable.com"
+```
